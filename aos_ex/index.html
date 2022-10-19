@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AOS기능</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="count.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+
+      <h2 class="count">0</h2>
+
+      <div data-aos="zoom-out-left">
+        <!-- 오른쪽으로 줌아웃 하는 모션 설정 -->
+        <section class="box"></section>
+        <!-- 내용 ... -->
+      </div>
+
+      <!-- 다양한 속성들이 존재한다. (설명은 후술) -->
+      <div data-aos="fade-up" data-aos-offset="200" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+        <!-- 내용 ... -->
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+    <!-- AOS 스크립트 시작 -->
+    <script>
+      AOS.init(); // 자바스크립트로 init()을 해야 동작한다.
+    </script>
+  </body>
+</html>

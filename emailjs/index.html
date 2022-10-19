@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmailJS</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  </head>
+  <body>
+    <form id="contact-form">
+      <input type="hidden" name="contact_number" />
+      <label>Name</label>
+      <input type="text" name="name" />
+      <label>Email</label>
+      <input type="email" name="email" />
+      <label>Message</label>
+      <textarea name="message"></textarea>
+      <input type="submit" value="Send" id="button" />
+    </form>
+
+    <script type="text/javascript">
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init("hidKgrw00Fy8ALh5l");
+      })();
+    </script>
+    <script type="text/javascript">
+      const btn = document.getElementById("button");
+
+      window.onload = function () {
+        document.getElementById("contact-form").addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          btn.value = "Sending...";
+
+          const serviceID = "service_xo58mna";
+          const templateID = "template_4t4t7pm";
+
+          // generate a five digit number for the contact_number variable
+          this.contact_number.value = (Math.random() * 100000) | 0;
+          // these IDs from the previous steps
+          emailjs.sendForm(serviceID, templateID, this).then(
+            function () {
+              btn.value = "Send Email";
+              alert("Sent!");
+            },
+            function (error) {
+              btn.value = "Send Email";
+              alert(JSON.stringify(err));
+
+              console.log("FAILED...", error);
+            }
+          );
+        });
+      };
+    </script>
+  </body>
+</html>
